@@ -21,16 +21,13 @@
 #' c1 <- "taiwan weather"
 #' d1 <- "local weather"
 #' text1 <- t(data.frame(a1,b1,c1,d1))
-#' tdm1 <- CTDM(doc = text1, weighting = "tfidf", shortTermDeleted = FALSE)
+#' tdm1 <- CTDM(doc = text1, weighting = "tfidf", EngTermDeleted = TRUE,NumTermDeleted = TRUE, shortTermDeleted = FALSE)
 #'
 #' #Chinese Document
 #' text2 <- readLines("http://o8e1oty0e.bkt.clouddn.com/cn.txt")
 #' tdm2 <- CTDM(doc = text2, weighting = "tfidf", shortTermDeleted = TRUE)
-#' CTDM(doc = text2, weighting = "count", shortTermDeleted = TRUE)
+#' CTDM(doc = text2, weighting = "count",EngTermDeleted = TRUE,NumTermDeleted = TRUE, shortTermDeleted = TRUE)
 
-doc <- read.csv("C:\\Users\\jimliu741523\\Desktop\\nestle.csv",header=T)
-doc <- doc$內容
-tdm2 <- CTDM(doc = doc, weighting = "tfidf",EngTermDeleted = F,NumTermDeleted = F, shortTermDeleted = TRUE)
 
 CTDM <- function(doc,weighting,EngTermDeleted = TRUE,NumTermDeleted = TRUE, shortTermDeleted = TRUE){
   ###jiebaR
@@ -128,7 +125,7 @@ CTDM <- function(doc,weighting,EngTermDeleted = TRUE,NumTermDeleted = TRUE, shor
 #' (dtm2 <- CDTM(doc = text2, weighting = "tfidf", shortTermDeleted = TRUE))
 #' CDTM(doc = text2, weighting = "tf", shortTermDeleted = TRUE)
 
-CDTM <- function(doc,weighting,shortTermDeleted){
+CDTM <- function(doc,weighting,EngTermDeleted = TRUE, NumTermDeleted = TRUE, shortTermDeleted =TRUE){
   ###jiebaR
   cutter <- jiebaR::worker()
   dataText <- as.matrix(doc)
