@@ -55,7 +55,7 @@ CTDM <- function(doc,weighting,EngTermDeleted = TRUE,NumTermDeleted = TRUE, shor
   
   dtm <- matrix(nrow = length(dataText),ncol = length(term),0)#likely to be sparse matrix, can use Matrix::Matrix
   
-  if(weighting=="equal"){
+  if(weighting=="binary"){
     for(i in 1:length(term)){
       find1 <- it_freq$id[it_freq$term==term[i]]
       dtm[find1,i] <- 1
@@ -151,7 +151,7 @@ CDTM <- function(doc,weighting,EngTermDeleted = TRUE, NumTermDeleted = TRUE, sho
   
   dtm <- matrix(nrow = length(dataText),ncol = length(term),0)#likely to be sparse matrix, can use Matrix::Matrix
   
-  if(weighting=="equal"){
+  if(weighting=="binary"){
     for(i in 1:length(term)){
       find1 <- it_freq$id[it_freq$term==term[i]]
       dtm[find1,i] <- 1
